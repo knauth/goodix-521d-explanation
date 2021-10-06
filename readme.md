@@ -26,7 +26,9 @@ First, make sure you have no other versions of libfprint or fprintd. You should 
 
 Next we'll install the older version of fprintd-libfprint2. Go to the `fprintd-libfprint` directory, which contains a modified PKGBUILD for the AUR. Make sure you have the following dependencies installed:
 
-`git gtk-doc meson pam pam_wrapper python-cairo python-dbus python-dbusmock python-gobject`
+`git meson pam pam_wrapper python-cairo python-dbus python-dbusmock python-gobject`
+
+Note: if you want to debug and test more stuff, also install `gtk-doc` and change `Dgtk-examples` to `true` in part 3.
 
 All of these should be installable using pacman, please let me know if not.
 
@@ -39,7 +41,7 @@ The final step! Go to the `libfprint` directory. Run `git branch` and make sure 
 
 Next run the following commands:
 
-`sudo meson -Dgtk-examples=true -Ddrivers=all -Dprefix=/usr . _build`
+`sudo meson -Dgtk-examples=false -Ddrivers=all -Dprefix=/usr . _build`
 
 `sudo ninja -C _build install`
 
