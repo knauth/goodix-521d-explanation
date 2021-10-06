@@ -1,6 +1,8 @@
 # Goodix 521d Configuration Instructions
 Tested on Arch and Manjaro. 
 
+To download this repo: `git clone --recurse-submodules https://github.com/knauth/goodix-521d-explanation.git`
+
 Follow this guide at your own risk. This software is experimental and not guaranteed to do anything. It might break stuff; I'm not responsible for that. Ensure you understand every command you run on your system before you execute it.
 
 You'll need all of the following things, which should be in this git repo:
