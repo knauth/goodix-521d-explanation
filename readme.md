@@ -47,4 +47,6 @@ These commands build and install the patched code.
 
 Now, finally, run `systemctl restart fprintd` to restart the fingerprint service. You should be done! Just use `fprintd-enroll` to enroll a new finger. A word of caution- the driver doesn't wait for you to place your finger down, so be quick.
 
+For getting this working for authentication, checkout [this](https://wiki.archlinux.org/title/Fprint) Arch Wiki page.
+
 Thanks to everyone who got this code working, especially Infinytum (NilaTheDragon on Discord) who did amazing work to complete the driver and helped me get it installed as well :).
