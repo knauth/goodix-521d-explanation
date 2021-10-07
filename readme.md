@@ -1,4 +1,4 @@
-# This explanation has been superceded by an AUR package which makes things much easier, please see the[Goodix Linux Development Discord](https://discord.gg/tqxCu3986U) for more information.
+# This explanation has been superceded by an AUR package which makes things much easier, please see the [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U) for more information.
 
 # Goodix 521d Configuration Instructions
 Tested on Arch and Manjaro. 
