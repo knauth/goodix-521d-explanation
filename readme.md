@@ -12,7 +12,7 @@ You'll need all of the following things, which should be in this git repo:
 - A PKGBUILD for a lower version of fprintd-libfprint2
 - A simple C program to reset the reader
 - The goodix-fp-dump folder provided by the good people at [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U), with some modifications
-- The patched version of libfprint2 created by [infinytum](https://github.com/infinytum)
+- No longer necessary: the patched version of libfprint2 created by [infinytum](https://github.com/infinytum)
 
 ## Part 1: Flashing the firmware
 We need to flash the firmware of the sensor with an earlier version. Enter the `goodix-fp-dump` directory and run `sudo python run_521d.py` to flash the firmware. It might fail with a timeout error. In this case, go to the usbreset directory and do the following:
@@ -37,17 +37,7 @@ All of these should be installable using pacman, please let me know if not.
 Run `makepkg -si` to install the program.
 
 ## Part 3: Installing patched libfprint
-The final step! Go to the `libfprint` directory. Run `git branch` and make sure the only option is `feat-5110-images` (press q to quit the viewer). If not, you can run this command in the main directory to get the correct branch:
-
-`git clone --branch feat-5110-images https://github.com/infinytum/libfprint.git`
-
-Next run the following commands:
-
-`sudo meson -Dgtk-examples=false -Ddrivers=all -Dprefix=/usr . _build`
-
-`sudo ninja -C _build install`
-
-These commands build and install the patched code.
+The final step! Install the AUR package `libfprint-goodix-521d`.
 
 Now, finally, run `systemctl restart fprintd` to restart the fingerprint service. You should be done! Just use `fprintd-enroll` to enroll a new finger. A word of caution- the driver doesn't wait for you to place your finger down, so be quick.
 
