@@ -1,6 +1,6 @@
 [submodule "goodix-fp-dump"]
 	path = goodix-fp-dump
-	url = ./goodix-fp-dump
+	url = https://github.com/mpi3d/goodix-fp-dump.git
 [submodule "libfprint"]
 	path = libfprint
-	url = ./libfprint
+	url = https://github.com/rootd/libfprint.git
