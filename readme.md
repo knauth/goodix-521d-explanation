@@ -9,7 +9,7 @@ Follow this guide at your own risk. This software is experimental and not guaran
 
 You'll need all of the following things, which should be in this git repo:
 
-- A PKGBUILD for a lower version of fprintd-libfprint2
+- A package for a lower version of fprintd-libfprint2
 - A simple C program to reset the reader
 - The goodix-fp-dump folder provided by the good people at [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U), with some modifications
 - No longer necessary: the patched version of libfprint2 created by [infinytum](https://github.com/infinytum)
@@ -24,17 +24,13 @@ We need to flash the firmware of the sensor with an earlier version. Enter the `
 Then run the Python code again. Eventually it should flash successfully. Now we can move on to step 2.
 
 ## Part 2: Installing older fprintd
-First, make sure you have no other versions of libfprint or fprintd. You should be able to remove them with `sudo pacman -Rc libfprint fprintd-libfprint2`. This is important since the following steps will fail if these programs are already installed.
+First, **make sure you have no other versions of libfprint or fprintd**. You should be able to remove them with `sudo pacman -Rc libfprint fprintd-libfprint2`. This is important since the following steps will fail if these programs are already installed.
 
-Next we'll install the older version of fprintd-libfprint2. Go to the `fprintd-libfprint` directory, which contains a modified PKGBUILD for the AUR. Make sure you have the following dependencies installed:
+Next we'll install the older version of fprintd-libfprint2. Go to the `fprintd` directory and run the following:
 
-`git meson pam pam_wrapper python-cairo python-dbus python-dbusmock python-gobject`
+`sudo pacman -U fprintd-1.92.0-1-x86_64.pkg.tar.zst`
 
-Note: if you want to debug and test more stuff, also install `gtk-doc` and change `Dgtk-examples` to `true` in part 3.
-
-All of these should be installable using pacman, please let me know if not.
-
-Run `makepkg -si` to install the program.
+*Note as of 10/12: I'm not sure how this new method affects dependencies. Pacman should resolve dependencies automatically, but please let me know on Discord if you have any issues.*
 
 ## Part 3: Installing patched libfprint
 The final step! Install the AUR package `libfprint-goodix-521d`.
