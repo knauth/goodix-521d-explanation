@@ -1,6 +1,6 @@
 [submodule "goodix-fp-dump"]
 	path = goodix-fp-dump
-	url = https://github.com/knauth/goodix-fp-dump.git
+	url = https://github.com/infinytum/goodix-fp-dump.git
 [submodule "libfprint"]
 	path = libfprint
 	url = https://github.com/infinytum/libfprint.git
