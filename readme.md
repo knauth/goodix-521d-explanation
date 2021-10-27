@@ -1,18 +1,16 @@
-# Please see the [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U) for more information and help if you need it.
+## Please see the [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U) for more information and help if you need it.
 
 # Goodix 521d Configuration Instructions
 Tested on Arch and Manjaro. 
 
 To download this repo: `git clone --recurse-submodules https://github.com/knauth/goodix-521d-explanation.git`
 
-Follow this guide at your own risk. This software is experimental and not guaranteed to do anything. It might break stuff; I'm not responsible for that. Ensure you understand every command you run on your system before you execute it.
+Follow this guide at your own risk. This software is experimental and not guaranteed to do anything. It might break stuff; I'm not responsible for that. Ensure you understand every command you run on your system before you execute it. **Don't use it in secure situations or as your only authentication method.**
 
 You'll need all of the following things, which should be in this git repo:
 
-- A package for a lower version of fprintd-libfprint2
 - A simple C program to reset the reader
-- The goodix-fp-dump folder provided by the good people at [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U), with some modifications
-- No longer necessary: the patched version of libfprint2 created by [infinytum](https://github.com/infinytum)
+- The goodix-fp-dump folder provided by the good people at [Goodix Linux Development Discord](https://discord.gg/tqxCu3986U), with some modifications by [infinytum](https://github.com/infinytum)
 
 ## Part 1: Flashing the firmware
 We need to flash the firmware of the sensor with an earlier version. Enter the `goodix-fp-dump` directory and run `sudo python run_521d.py` to flash the firmware. It might fail with a timeout error. In this case, go to the usbreset directory and do the following:
@@ -23,19 +21,13 @@ We need to flash the firmware of the sensor with an earlier version. Enter the `
 
 Then run the Python code again. Eventually it should flash successfully. Now we can move on to step 2.
 
-## Part 2: Installing older fprintd
-First, **make sure you have no other versions of libfprint or fprintd**. You should be able to remove them with `sudo pacman -Rc libfprint fprintd-libfprint2`. This is important since the following steps will fail if these programs are already installed.
-
-Next we'll install the older version of fprintd-libfprint2. Go to the `fprintd` directory and run the following:
-
-`sudo pacman -U fprintd-1.92.0-1-x86_64.pkg.tar.zst`
-
-*Note as of 10/12: I'm not sure how this new method affects dependencies. Pacman should resolve dependencies automatically, but please let me know on Discord if you have any issues.*
+## Part 2: Installing fprintd
+Install the latest version of fprintd by running `sudo pacman -S fprintd`.
 
 ## Part 3: Installing patched libfprint
 The final step! Install the AUR package `libfprint-goodix-521d`.
 
-Now, finally, run `systemctl restart fprintd` to restart the fingerprint service. You should be done! Just use `fprintd-enroll` to enroll a new finger. A word of caution- the driver doesn't wait for you to place your finger down, so be quick.
+Now, finally, run `systemctl restart fprintd` to restart the fingerprint service. You should be done! Use `fprintd-enroll` to enroll a new finger.
 
 For getting this working for authentication, checkout [this](https://wiki.archlinux.org/title/Fprint) Arch Wiki page.
 
