@@ -1,3 +1,3 @@
 [submodule "goodix-fp-dump"]
 	path = goodix-fp-dump
-	url = https://github.com/infinytum/goodix-fp-dump.git
+	url = https://github.com/goodix-fp-linux-dev/goodix-fp-dump.git
